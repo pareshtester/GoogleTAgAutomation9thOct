@@ -57,7 +57,7 @@ public class tagtest {
     @Test(dataProvider="data", retryAnalyzer = ReRunAutomationScript2.class )
 	public void tagtesting(String website,String tagtype, String GTMtext) throws InterruptedException
 	{
-    	 try {
+    	 
     	extenttest = extent.createTest("Google tag implementation of " +website);
     	//extenttest.fail("My ss", MediaEntityBuilder.createScreenCaptureFromPath("D:\\Automation\\GoogleTags\\Screenshot\\ss.png").build());
     	System.out.println("Website is:"+website);
@@ -146,16 +146,8 @@ public class tagtest {
 		
   driver.quit();
   
-    	 } catch(Exception e)
-    	 {
-    		 ScreenshotUtil screenshotUtil = new ScreenshotUtil(driver);
-           //  String screenshotPath = screenshotUtil.captureScreenshot("D:\\Automation\\GoogleTags\\testWithFailureScreenshot.png");
-    		 String screenshotPath =screenshotUtil.captureScreenshot(date1);
-             extenttest.fail("Test Failed. Screenshot attached.",
-                     MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
-             driver.quit();
-    	 }
-	}
+    	 } 
+
     
     
     @AfterMethod
@@ -164,6 +156,12 @@ public class tagtest {
     	if(result.getStatus()==ITestResult.FAILURE)
     	{
     		extenttest.log(Status.FAIL, result.getThrowable());
+    		ScreenshotUtil screenshotUtil = new ScreenshotUtil(driver);
+            //  String screenshotPath = screenshotUtil.captureScreenshot("D:\\Automation\\GoogleTags\\testWithFailureScreenshot.png");
+     		 String screenshotPath =screenshotUtil.captureScreenshot(date1);
+              extenttest.fail("Test Failed. Screenshot attached.",
+                      MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
+              driver.quit();
     	}
     	else if(result.getStatus()==ITestResult.SKIP)
     	{

@@ -10,7 +10,7 @@ import org.openqa.selenium.io.FileHandler;
 
 public class ScreenshotUtil {
 	WebDriver driver;
-
+	String userHome = System.getProperty("user.dir");
     public ScreenshotUtil(WebDriver driver) {
         this.driver = driver;
     }
@@ -18,7 +18,7 @@ public class ScreenshotUtil {
     public String captureScreenshot(String testName) {
         // Capture screenshot as a file
         File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        String screenshotPath = "D:\\Automation\\GoogleTags\\Screenshot\\" + testName + ".png";
+        String screenshotPath = userHome+"\\Screenshot\\" + testName + ".png";
         File destFile = new File(screenshotPath);
 
         try {
