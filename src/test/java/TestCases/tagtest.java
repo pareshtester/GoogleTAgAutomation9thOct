@@ -103,7 +103,7 @@ public class tagtest {
 	String tagtextarray[] = new String[we.size()];
 	for(int i=1; i<=we.size(); i++)
 	{
-		String elementtagtext=driver.findElement(By.cssSelector("div.container-picker__chip:nth-child("+i+")")).getText();
+		String elementtagtext=driver.findElement(By.xpath("/html/body/div[1]/div[2]/debugger/container-picker-ng/div/div[2]/container-chip-ng["+i+"]")).getText();
 		System.out.println("tag text is"+elementtagtext);
 		
 		tagtextarray[i-1] = elementtagtext;
