@@ -5,8 +5,9 @@
     <classes>
       <class name="TestCases.tagtest">
         <methods>
-          <include name="tagtesting" invocation-numbers="6"/>
+          <include name="tagtesting" invocation-numbers="0"/>
           <include name="reportvalidation"/>
+          <include name="close"/>
           <include name="setUp"/>
         </methods>
       </class> <!-- TestCases.tagtest -->

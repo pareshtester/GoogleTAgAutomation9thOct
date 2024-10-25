@@ -98,6 +98,7 @@ public class tagtest {
      driver.switchTo().window(parentwindow);
        // driver.switchTo().parentFrame();
 		driver.findElement(By.xpath("//button[contains(text(),' Continue ')]")).click();
+		Thread.sleep(5000);
 		List<WebElement> we = driver.findElements(By.cssSelector(".container-picker__chip"));
 	System.out.println("number is"+we.size());
 	String tagtextarray[] = new String[we.size()];
@@ -166,7 +167,7 @@ public class tagtest {
     	else if(result.getStatus()==ITestResult.SKIP)
     	{
     		extenttest.log(Status.SKIP, result.getThrowable());
-    		
+    		driver.close();
     	}else
     	{
     		extenttest.log(Status.PASS, "Test passed");
@@ -192,11 +193,11 @@ public class tagtest {
 		 
 				}
     
-//    @AfterTest
-//    public void close()
-//    {
-//    	driver.close();
-//    }
+   @AfterTest
+    public void close()
+    {
+    	driver.quit();
+    }
     
     
 }
