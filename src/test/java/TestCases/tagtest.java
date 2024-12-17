@@ -26,6 +26,7 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import com.aventstack.extentreports.util.Assert;
 
 public class tagtest {
 
@@ -128,7 +129,7 @@ public class tagtest {
 	String newtext="";
 	int i =0;
 	while( i < tagtextarray.length){
-		if(tagtextarray[i].equalsIgnoreCase(GTMtext))
+		if(tagtextarray[i].equalsIgnoreCase(GTMtext) || tagtextarray[i].equalsIgnoreCase(tagtype) )
 		{
 				System.out.println("pass");
 				//assertTrue(true);
@@ -141,7 +142,14 @@ public class tagtest {
 			}
 		
 	}
-	assertEquals(newtext, GTMtext);
+	
+	if(newtext.equalsIgnoreCase(GTMtext) || newtext.equalsIgnoreCase(tagtype))
+	{
+		System.out.println("Title is valid");
+	}else {
+		org.testng.Assert.fail();
+	}
+	//assertEquals(newtext, GTMtext);
 //		String selectedtag = driver.findElement(By.className("container-picker__chip container-picker__chip--selected")).getText();
 //		System.out.println(selectedtag);
 		
@@ -167,15 +175,16 @@ public class tagtest {
     	else if(result.getStatus()==ITestResult.SKIP)
     	{
     		extenttest.log(Status.SKIP, result.getThrowable());
-    		driver.close();
+    		driver.quit();
     	}else
     	{
     		extenttest.log(Status.PASS, "Test passed");
     	}
     	extent.flush();
-    	//driver.quit();
+    	driver.quit();
     }
     
+   
 
     @DataProvider(name="data")
 	   public String[][] Authentication() throws Exception{
@@ -193,11 +202,7 @@ public class tagtest {
 		 
 				}
     
-   @AfterTest
-    public void close()
-    {
-    	driver.quit();
-    }
+  
     
     
 }

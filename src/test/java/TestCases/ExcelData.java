@@ -19,7 +19,7 @@ public class ExcelData {
 	public String[][] readData() throws EncryptedDocumentException, IOException
 	{
      String userDir = System.getProperty("user.dir");
-	  FileInputStream excelFile = new FileInputStream(new File(userDir+"/TagData.xlsx") );
+	  FileInputStream excelFile = new FileInputStream(new File(userDir+"/Tags.xlsx") );
 	  Workbook workbook = WorkbookFactory.create(excelFile);
 	  Sheet sheet = workbook.getSheetAt(0);
 	  int rows = sheet.getLastRowNum();

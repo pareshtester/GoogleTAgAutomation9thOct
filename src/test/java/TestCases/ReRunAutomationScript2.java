@@ -6,7 +6,7 @@ import org.testng.ITestResult;
 public class ReRunAutomationScript2 implements IRetryAnalyzer {
 
 	private int retrycount = 0;
-	private static final int count = 7;
+	private static final int count = 2;
 	@Override
 	public boolean retry(ITestResult result) {
 		// TODO Auto-generated method stub
